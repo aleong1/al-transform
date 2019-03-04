@@ -10,19 +10,50 @@ z0  z1  ... zn
 import math
 
 def make_translate( x, y, z ):
-    pass
+    matrix = new_matrix()
+    ident(matrix)
+    matrix[3][0] = x
+    matrix[3][1] = y
+    matrix[3][2] = z
+    return matrix
 
 def make_scale( x, y, z ):
-    pass
+    matrix = new_matrix()
+    ident(matrix)
+    matrix[0][0] = x
+    matrix[1][1] = y
+    matrix[2][2] = z
+    return matrix
 
 def make_rotX( theta ):
-    pass
+    rad = math.radians(theta)
+    matrix = new_matrix()
+    ident(matrix)
+    matrix[1][1] = math.cos(rad)
+    matrix[1][2] = math.sin(rad)
+    matrix[2][1] = math.sin(rad) * -1
+    matrix[2][2] = math.cos(rad)
+    return matrix
 
 def make_rotY( theta ):
-    pass
+    rad = math.radians(theta)
+    matrix = new_matrix()
+    ident(matrix)
+    matrix[0][0] = math.cos(rad)
+    matrix[2][0] = math.sin(rad)
+    matrix[0][2] = math.sin(rad) * -1
+    matrix[2][2] = math.cos(rad)
+    return matrix
 
 def make_rotZ( theta ):
-    pass
+    rad = math.radians(theta)
+    matrix = new_matrix()
+    ident(matrix)
+    matrix[0][0] = math.cos(rad)
+    matrix[0][1] = math.sin(rad)
+    matrix[1][0] = math.sin(rad) * -1
+    matrix[1][1] = math.cos(rad)
+    return matrix
 
 #print the matrix such that it looks like
 #the template in the top comment
@@ -32,7 +63,7 @@ def print_matrix( matrix ):
         for c in range( len(matrix) ):
             s+= str(matrix[c][r]) + ' '
         s+= '\n'
-    print s
+    print (s)
 
 #turn the paramter matrix into an identity matrix
 #you may assume matrix is square
